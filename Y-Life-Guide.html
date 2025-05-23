@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta 名字="viewport" content="width=device-width, initial-scale=1.0">
+    <标题>青年大学习 - 生活技能百科平台</标题>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+            --gradient: linear-gradient(135deg, #4361ee 0%, #3f37c9 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 20px rgba(67, 97, 238, 0.2);
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            position: relative;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 4px 20px rgba(67, 97, 238, 0.3);
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .search-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title span {
+            margin-right: 10px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .tech-item {
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .demo-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--success);
+        }
+        
+        .demo-title {
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .demo-content {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #e9ecef;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .source-link {
+            color: var(--primary);
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .source-link:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-stack {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🎓 青年大学习：MVP 构建清单与项目构想</h1>
+            <p class="subtitle">为年轻人补上生活中缺失的一课，打造一站式生活技能学习平台</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="输入生活问题，如'怎么挑西瓜'、'北京医保怎么办理'...">
+            <button class="search-btn">搜索生活技能</button>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span>🔍</span> 一、项目简介</h2>
+            <div class="feature-card">
+                <h3>🧠 初衷</h3>
+                <p>大学生和刚步入社会的年轻人普遍缺乏生活技能和社会事务处理经验，本项目旨在打造一个面向年轻人的「生活技能百科平台」，通过关键词搜索 + 内容总结，快速获取衣食住行、社保医保、租房体检等生活常识的图文指南。</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span>🚀</span> 二、MVP 功能清单（最小可行产品）</h2>
+            <div class="feature-list">
+                <div class="feature-card">
+                    <h3>✅ 1. 关键词搜索入口</h3>
+                    <p><strong>功能：</strong>用户输入如"怎么挑西瓜""北京体检流程"关键词。</p>
+                    <p><strong>技术实现：</strong></p>
+                    <ul>
+                        <li>SpringBoot 接口接收搜索词</li>
+                        <li>关键词预处理（去停用词、拼写修正）</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>✅ 2. 网络内容爬取模块</h3>
+                    <p><strong>功能：</strong>从主流平台获取相关内容（知乎、小红书、B站等）。</p>
+                    <p><strong>技术实现：</strong></p>
+                    <ul>
+                        <li>使用 Python 脚本调用爬虫框架（如 requests + BeautifulSoup 或 Playwright）</li>
+                        <li>限制爬取 2~3 个网页/视频链接，模拟内容检索</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>✅ 3. 内容总结生成</h3>
+                    <p><strong>功能：</strong>将爬取到的内容交给 AI 总结为图文知识卡片。</p>
+                    <p><strong>技术实现：</strong></p>
+                    <ul>
+                        <li>调用 ChatGPT API（或文心一言/通义千问等）传入网页原文 → 返回结构化总结</li>
+                        <li>输出：关键词 + 总结段落 + 原始链接 + 标签分类（如「挑选技巧」「地区差异」）</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>✅ 4. 前端展示页面（简单 HTML 或 Vue 模板）</h3>
+                    <p><strong>功能：</strong>展示搜索结果 + 图文总结 + 外链原文</p>
+                    <p><strong>页面布局建议：</strong></p>
+                    <ul>
+                        <li>搜索框（顶部）</li>
+                        <li>卡片区：每张卡片显示关键词、内容概要、来源平台、原文链接</li>
+                        <li>标签筛选（可选）</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>✅ 5. 地区化数据演示（选做）</h3>
+                    <p><strong>功能：</strong>演示地区差异，比如蔬菜价格、租金水平</p>
+                    <p><strong>实现方式：</strong></p>
+                    <ul>
+                        <li>写死一组示例数据（如 北京 vs 贵阳）</li>
+                        <li>使用 chart.js 或 echarts 展示可视化折线图/柱状图</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span>🧱</span> 三、项目结构构想（技术栈）</h2>
+            <div class="tech-stack">
+                <div class="tech-item">后端服务<br>Java + Spring Boot</div>
+                <div class="tech-item">数据处理<br>Python 爬虫 + 调用 AI 接口</div>
+                <div class="tech-item">数据存储<br>MySQL 或文件缓存</div>
+                <div class="tech-item">内容生成<br>OpenAI API / 国内大模型API</div>
+                <div class="tech-item">前端展示<br>Vue3 / Thymeleaf + Bootstrap/Tailwind</div>
+                <div class="tech-item">部署<br>本地运行 / 阿里云轻量服务器</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title"><span>✨</span> 四、你可以演示的效果（Demo 展示）</h2>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">示例关键词：「怎么挑西瓜」</h3>
+                <div class="demo-content">
+                    <p><strong>🤖 总结段落：</strong>观察瓜蒂（新鲜青绿为佳）、看纹路（清晰整齐）、敲声清脆（咚咚响表示成熟）、掂重量（同样大小较轻者为佳）等方法。</p>
+                </div>
+                <div>
+                    <a href="#" class="source-link">🔗 知乎：西瓜挑选五大技巧</a>
+                    <a href="#" class="source-link">🔗 小红书：夏日西瓜挑选指南</a>
+                </div>
+                <div>
+                    <span class="tag">水果挑选</span>
+                    <span class="tag">夏季指南</span>
+                    <span class="tag">实用技巧</span>
+                </div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">示例关键词：「北京医保怎么办理」</h3>
+                <div class="demo-content">
+                    <p><strong>🤖 总结：</strong>网上预约（北京医保官网）→ 医保局现场拍照 → 提交身份证材料（原件+复印件）→ 等待制卡（约15工作日）→ 领取医保卡。</p>
+                </div>
+                <div>
+                    <a href="#" class="source-link">🔗 北京市政务网：医保办理流程</a>
+                    <a href="#" class="source-link">🔗 知乎：北京医保办理经验帖</a>
+                </div>
+                <div>
+                    <span class="tag">社保</span>
+                    <span class="tag">城市政务</span>
+                    <span class="tag">北京专属</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© 2023 青年大学习 - 生活技能百科平台 | 为年轻人补上生活中缺失的一课</p>
+        </div>
+    </footer>
+</内容>
+</html>
